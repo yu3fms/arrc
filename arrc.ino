@@ -1,4 +1,4 @@
-// AARRC v0.1 (Arduino Amateur Radio Repeater Controller)
+// ARRC v0.1 (Amateur Radio Repeater Controller)
 // Copyright (C) 2018 Filip M. Stanic, YT7FMS
 
 // This program is free software; you can redistribute it and/or
