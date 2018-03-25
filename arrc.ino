@@ -60,7 +60,7 @@ void loop () {
           }
           digitalWrite(PTT, LOW);
           TX = 0;
-          delay(500);
+          delay(300); // Prevent TX triggering in case the receive station pick up RF from TX at the end of TX
         }
       }
     }
