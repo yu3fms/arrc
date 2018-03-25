@@ -39,6 +39,17 @@ void setup () {
   pinMode(PTT, OUTPUT);
 }
 
+void endtx () {
+  if (BEEP == 1) {
+    tone(4, 1480, 150);
+    delay(200);
+    noTone(4);
+  }
+  digitalWrite(PTT, LOW);
+  TX = 0;
+  delay(300); // Prevent TX triggering in case the receive station pick up RF from TX at the end of TX
+}
+
 void loop () {
   if (analogRead(CSQ) > TS) {
     if (TX == 0) {
@@ -53,14 +64,7 @@ void loop () {
           break;
         }
         if (i >= TAIL) {
-          if (BEEP == 1) {
-            tone(4, 1480, 150);
-            delay(200);
-            noTone(4);
-          }
-          digitalWrite(PTT, LOW);
-          TX = 0;
-          delay(300); // Prevent TX triggering in case the receive station pick up RF from TX at the end of TX
+          endtx();
         }
       }
     }
