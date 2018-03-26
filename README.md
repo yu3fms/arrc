@@ -22,3 +22,5 @@ a repeaters TX station in transmit mode.
 
 - Reset itself before approx 50 days so that millis() do not overflow to ensure
   the program works properly.
+
+- Basic schematic for the circuit around Arduino
