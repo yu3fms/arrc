@@ -8,19 +8,17 @@ digital I/O's to HIGH state.
 This signal can then be led to a transistor or optocoupler to put
 a repeaters TX station in transmit mode.
 
-# Features
+## Features
 
-- Time Out Timer
+- Time Out Timer <br>
   Overall time for which the repeater is allowed to be in TX state.
   It resets on every clean TX stop.
 
-- Cool Off Time
+- Cool Off Time <br>
   Time for which the repeater will be in idle state and will not TX after the
   Time Out Time value has been reached.
 
-# To Be Added
+## To Be Added
 
 - Reset itself before approx 50 days so that millis() do not overflow to ensure
   the program works properly.
-
-- Basic schematic for the circuit around Arduino
