@@ -54,32 +54,48 @@ void setup () {
 }
 
 void endtx () {
-  if (BEEP == 1) {
+  #if BEEP == true
     tone(4, 1480, 150);
     delay(200);
     noTone(4);
-  }
+  #endif
   digitalWrite(PTT, LOW);
   TX = 0;
-  delay(300); // Prevent TX triggering in case the receive station pick up RF from TX at the end of TX
+  BRK = 0;
+  delay(XLOOP); // Prevent TX triggering in case the receive station pick up RF from TX at the end of TX
 }
 
 void loop () {
   if (analogRead(CSQ) > TS) {
+    BRK = 0;
     if (TX == 0) {
+      #if TOTACT == true
+        TXST = millis();
+      #endif
       TX = 1;
       digitalWrite(PTT, HIGH);
     }
+    #if TOTACT == true
+      MILS = millis();
+      if ((MILS - TXST) >= TOT) {
+        endtx();
+        TXST = millis();
+        delay(COT);
+      }
+    #endif
   }
   else {
-    if (TX == 1) {
-      for (int i = 0; i <= TAIL; i++) {
+    if (TX == 1 && BRK == 0) {
+      delay(300); // Prevent immidiate tail brake
+      TAIL_START = millis();
+      while ((millis() - TAIL) < TAIL_START) {
         if (analogRead(CSQ) > TS) {
+          BRK = 1;
           break;
         }
-        if (i >= TAIL) {
-          endtx();
-        }
+      }
+      if (TX == 1 && BRK == 0) {
+        endtx();
       }
     }
   }
