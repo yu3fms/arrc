@@ -31,7 +31,22 @@ const int TS = 20;  // Treshold for audio level.
 
 const unsigned long TAIL = 700;  // Tail length (milliseconds) !! 300ms will be added to this value
 
-int TX = 0;
+// Play "beep" at the end of TX (true / false)
+#define BEEP true
+
+// Use timeout timer (true / false)
+#define TOTACT true
+
+const unsigned long TOT = 60000;   // TX timeout time (milliseconds)
+const unsigned long COT = 5000;   // TX Station forced COOL OFF TIME after a timeout (milliseconds)
+const int XLOOP = 300;  // Set delay time after TX so we do not fall in RX-TX loop (milliseconds)
+
+int TX = 0;          // Are we in TX (do not edit)
+int BRK = 0;         // BRK (do not edit)
+unsigned long TXST = 0;       // TX start time in millis (do not edit)
+unsigned long TAIL_START = 0; // Tail start count time (do not edit)
+unsigned long MILS = 0;       // (do not edit)
+int STOPTX = 0;     // (do not edit)
 
 void setup () {
   pinMode(CSQ, INPUT);
