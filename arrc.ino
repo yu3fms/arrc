@@ -29,8 +29,7 @@ const int PTT = 3;  // PTT pin
 const int TS = 20;  // Treshold for audio level.
                     // You should experiment with this for Your partucular radio.
 
-const int TAIL = 7000; // Tail length
-const int BEEP = 1;    // Play "beep" at the end of TX
+const unsigned long TAIL = 700;  // Tail length (milliseconds) !! 300ms will be added to this value
 
 int TX = 0;
 
