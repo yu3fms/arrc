@@ -18,6 +18,9 @@ a repeaters TX station in transmit mode.
   Time for which the repeater will be in idle state and will not TX after the
   Time Out Time value has been reached.
 
+- Beep sound on TX end <br>
+  Play 1480Hz tone for the duration of 150ms at the end of TX
+
 ## To Be Added
 
 - Reset itself before approx 50 days so that millis() do not overflow to ensure
