@@ -23,6 +23,7 @@
 // digital I/O's to HIGH state.
 // This signal can then be led to a transistor or optocoupler to put
 // a repeaters TX station in transmit mode.
+// Added comment test line
 
 const int CSQ = A0; // Analog Input PIN to serve as COS/COR signal
 const int PTT = 3;  // PTT pin
